@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EntityScan(basePackages = "com.dulitha.country.model")
 public class CountryBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CountryBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CountryBackendApplication.class, args);
+    }
 
 }
