@@ -16,7 +16,8 @@ public class Country extends AuditModel {
     @Column(name = "name", nullable = false)
     private String name;
 
-    private String flagUrl;
+    @Column(name = "code", nullable = false)
+    private String code;
 
     @Column(nullable = false)
     private Long continentId;

@@ -5,17 +5,18 @@ import com.dulitha.country.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class CountryServiceImpl implements CountryService{
 
     @Autowired
     CountryRepository countryRepository;
 
     @Override
-    public Country save(Long continentId, Country country) {
-        country.setContinentId(continentId);
+    public Country save(Country country) {
         return countryRepository.save(country);
     }
 

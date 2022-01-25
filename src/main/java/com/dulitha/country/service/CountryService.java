@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface CountryService {
 
-    Country save(Long continentId, Country country);
+    Country save(Country country);
 
     Country fetchCountryById(Long id);
 
