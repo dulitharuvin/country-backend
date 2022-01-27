@@ -32,7 +32,7 @@ public class CountryController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Country> listCountryByContinentId(@RequestParam(value = "continentId", required = false) Long continentId,
+    public List<Country> listCountries(@RequestParam(value = "continentId", required = false) Long continentId,
                                                                   @RequestParam(value = "query", required = false) String query,
                                                                   Pageable pageable) {
 
