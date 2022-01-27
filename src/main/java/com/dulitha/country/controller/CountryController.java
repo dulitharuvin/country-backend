@@ -40,7 +40,7 @@ public class CountryController {
             Page<Country> countries = countryService.fetchAllCountries(pageable);
             return countries.getContent();
         }
-
-        return null;
+        Page<Country> countries = countryService.fetchAllCountriesByContinentId(continentId,pageable);
+        return countries.getContent();
     }
 }
