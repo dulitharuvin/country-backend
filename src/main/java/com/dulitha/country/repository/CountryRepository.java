@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
-    Page<Country> findByContinentId(Long preschoolId, Pageable pageable);
+    Page<Country> findByContinentContinentId(Long continentId, Pageable pageable);
 }

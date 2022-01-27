@@ -1,6 +1,8 @@
 package com.dulitha.country.model;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -19,6 +21,8 @@ public class Country extends AuditModel {
     @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(nullable = false)
-    private Long continentId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "continentId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Continent continent;
 }

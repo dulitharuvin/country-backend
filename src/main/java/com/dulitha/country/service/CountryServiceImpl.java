@@ -21,13 +21,8 @@ public class CountryServiceImpl implements CountryService{
     }
 
     @Override
-    public Country fetchCountryById(Long id) {
-        Optional<Country> country = countryRepository.findById(id);
-        if (country.isPresent()) {
-            return country.get();
-        } else {
-            return null;
-        }
+    public Optional<Country> fetchCountryById(Long id) {
+        return countryRepository.findById(id);
     }
 
     @Override
@@ -38,7 +33,7 @@ public class CountryServiceImpl implements CountryService{
 
     @Override
     public Page<Country> fetchAllCountriesByContinentId(Long continentId, Pageable pageable) {
-        Page<Country> branches = countryRepository.findByContinentId(continentId, pageable);
+        Page<Country> branches = countryRepository.findByContinentContinentId(continentId, pageable);
         return branches;
     }
 }

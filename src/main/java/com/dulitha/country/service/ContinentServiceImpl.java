@@ -21,13 +21,8 @@ public class ContinentServiceImpl implements  ContinentService{
     }
 
     @Override
-    public Continent fetchContinentById(Long id) {
-        Optional<Continent> preschool = continentRepository.findById(id);
-        if (preschool.isPresent()) {
-            return preschool.get();
-        } else {
-            return null;
-        }
+    public Optional<Continent> fetchContinentById(Long id) {
+        return continentRepository.findById(id);
     }
 
     @Override

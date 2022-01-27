@@ -4,11 +4,13 @@ import com.dulitha.country.model.Country;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 public interface CountryService {
 
     Country save(Country country);
 
-    Country fetchCountryById(Long id);
+    Optional<Country> fetchCountryById(Long id);
 
     Page<Country> fetchAllCountries(Pageable pageable);
 
