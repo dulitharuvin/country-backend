@@ -23,8 +23,8 @@ public class CountryController {
     ContinentService continentService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/{continentId}")
-    public Country save(@PathVariable (value = "continentId") Long continentId,
-            @RequestBody Country country) {
+    public Country save(@PathVariable(value = "continentId") Long continentId,
+                        @RequestBody Country country) {
         return continentService.fetchContinentById(continentId).map(continent -> {
             country.setContinent(continent);
             return countryService.save(country);
@@ -33,14 +33,16 @@ public class CountryController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Country> listCountries(@RequestParam(value = "continentId", required = false) Long continentId,
-                                                                  @RequestParam(value = "query", required = false) String query,
-                                                                  Pageable pageable) {
+                                       @RequestParam(value = "query", required = false) String query,
+                                       Pageable pageable) {
 
-        if (continentId == null) {
-            Page<Country> countries = countryService.fetchAllCountries(pageable);
-            return countries.getContent();
+        Page<Country> countries;
+        var searchQuery = (query == null) ? "" : query;
+        if (continentId != null) {
+            countries = countryService.fetchAllCountriesByNameOrCodeAndContinentId(continentId, searchQuery, pageable);
+        } else {
+            countries = countryService.fetchAllCountriesByNameOrCode(searchQuery, pageable);
         }
-        Page<Country> countries = countryService.fetchAllCountriesByContinentId(continentId,pageable);
         return countries.getContent();
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CountryServiceImpl implements CountryService{
+public class CountryServiceImpl implements CountryService {
 
     @Autowired
     CountryRepository countryRepository;
@@ -33,7 +33,19 @@ public class CountryServiceImpl implements CountryService{
 
     @Override
     public Page<Country> fetchAllCountriesByContinentId(Long continentId, Pageable pageable) {
-        Page<Country> branches = countryRepository.findByContinentContinentId(continentId, pageable);
-        return branches;
+        Page<Country> countries = countryRepository.findByContinentContinentId(continentId, pageable);
+        return countries;
+    }
+
+    @Override
+    public Page<Country> fetchAllCountriesByNameOrCode(String searchQuery, Pageable pageable) {
+        Page<Country> countries = countryRepository.findByNameOrCode(searchQuery, pageable);
+        return countries;
+    }
+
+    @Override
+    public Page<Country> fetchAllCountriesByNameOrCodeAndContinentId(Long continentId, String searchQuery, Pageable pageable) {
+        Page<Country> countries = countryRepository.findByNameOrCodeAndContinentId(continentId, searchQuery, pageable);
+        return countries;
     }
 }

@@ -14,5 +14,9 @@ public interface CountryService {
 
     Page<Country> fetchAllCountries(Pageable pageable);
 
-    Page<Country> fetchAllCountriesByContinentId(Long preschoolId, Pageable pageable);
+    Page<Country> fetchAllCountriesByContinentId(Long continentId, Pageable pageable);
+
+    Page<Country> fetchAllCountriesByNameOrCode(String searchQuery, Pageable pageable);
+
+    Page<Country> fetchAllCountriesByNameOrCodeAndContinentId(Long continentId, String searchQuery, Pageable pageable);
 }
